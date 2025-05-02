@@ -17,7 +17,7 @@ a {
 }
 
 .navbar {
-    background-color: #80be74;
+    background-color: #A60053;
     padding: 15px 20px;
 }
 
@@ -50,7 +50,8 @@ nav button:hover {
 }
 
 footer {
-    background-color: #80be74
+    background-color: #80be74;
+    font-size: 18px;
 }
 
 
@@ -58,6 +59,7 @@ footer {
 footer a {
     color: rgb(41, 88, 40);
     padding-left: 10px;
+   
 
 }
 
