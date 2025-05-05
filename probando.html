@@ -49,134 +49,87 @@
 
 
     <main>
-        <style>
-            .country-card {
-              transition: transform 0.3s ease;
-              overflow: hidden;
-              border-radius: 1rem;
-            }
-        
-            .country-card:hover {
-              transform: translateY(-5px);
-            }
-        
-            .country-img {
-              width: 100%;
-              height: 220px;
-              object-fit: cover;
-            }
-        
-            .country-overlay {
-              position: absolute;
-              bottom: 0;
-              left: 0;
-              width: 100%;
-              padding: 1rem;
-              background: linear-gradient(to top, rgba(0, 0, 0, 0.6), transparent);
-            }
-        
-            .country-name {
-              color: white;
-              font-size: 1.25rem;
-              font-weight: 600;
-              margin: 0;
-              text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
-            }
-          </style>
-        
-        <section class="container mt-5">
-            <h1 class="display-4 text-center mb-4">Explora por países</h1>
-            <div class="alert alert-info text-center w-100 mb-4" role="alert">
-                Explora por país y descubre rutas únicas para tu próxima aventura.
+      <section class="text-center py-5">
+        <h1 class="display-4 fw-bold">¿No sabes por dónde empezar tu próxima aventura?</h1>
+        <p class="lead mt-3">
+          Te mostramos tres rutas únicas por categoría —<strong>Costa</strong>, <strong>Naturaleza</strong> y <strong>Cultural</strong>— seleccionadas al azar para ti.
+          <br>
+          ¿No te decides? Haz clic y genera nuevas opciones para seguir explorando.
+        </p>
+        <button class="btn btn-primary mt-4">Ver nuevas rutas</button>
+      </section>
+      <div class="container ">
+        <div class="row justify-content-center">
+          <div class="col-12 col-md-6 col-lg-4 mb-3">
+            <div class="card h-100 position-relative overflow-hidden">
+              <img class="card-img-top" th:src="@{${ruta.Foto1}}"
+                   src="https://cdn.pixabay.com/photo/2022/04/22/20/13/montmartre-7150549_1280.jpg"
+                   alt="Imagen de ${ruta.nombre}" />
+                   
+              <div class="card-body pb-5">
+                <span class="badge bg-primary" th:text="${ruta.nombrePais}"></span>
+                <h4 class="card-title" th:text="${ruta.nombre}"></h4>
+              </div>
+          
+              <!-- Botón siempre abajo -->
+              <a th:href="@{/rutas/{id}(id=${ruta.id})}"
+                 class="btn-1 position-absolute bottom-0 start-50 translate-middle-x mb-3">
+                Ver más
+              </a>
             </div>
-        
-            <div class="row g-4 mb-5">
-
-                <!-- Tarjeta de país -->
-                <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-                  <a href="/pais/1" class="text-decoration-none">
-                    <div class="card border-0 shadow-sm country-card position-relative">
-                      <img src="https://cdn.pixabay.com/photo/2017/12/12/11/37/bastei-3014467_1280.jpg" alt="Imagen de España" class="country-img">
-                      <div class="country-overlay">
-                        <p class="country-name">Alemania</p>
-                      </div>
-                    </div>
-                  </a>
-                </div>
-            
-                <!-- Repite esta tarjeta cambiando href, imagen y nombre -->
-                <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-                  <a href="/pais/2" class="text-decoration-none">
-                    <div class="card border-0 shadow-sm country-card position-relative">
-                      <img src="https://cdn.pixabay.com/photo/2017/06/28/15/32/venice-2451047_1280.jpg" alt="Imagen de Italia" class="country-img">
-                      <div class="country-overlay">
-                        <p class="country-name">Italia</p>
-                      </div>
-                    </div>
-                  </a>
-                </div>
-                <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-                    <a href="/pais/2" class="text-decoration-none">
-                      <div class="card border-0 shadow-sm country-card position-relative">
-                        <img src="https://cdn.pixabay.com/photo/2022/05/13/16/22/lake-7194103_1280.jpg" alt="Imagen de Italia" class="country-img">
-                        <div class="country-overlay">
-                          <p class="country-name">Italia</p>
-                        </div>
-                      </div>
-                    </a>
-                  </div>
-               
-                  <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-                    <a href="/pais/2" class="text-decoration-none">
-                      <div class="card border-0 shadow-sm country-card position-relative">
-                        <img src="https://cdn.pixabay.com/photo/2021/08/14/01/58/museum-6544420_1280.jpg" alt="Imagen de Italia" class="country-img">
-                        <div class="country-overlay">
-                          <p class="country-name">Italia</p>
-                        </div>
-                      </div>
-                    </a>
-                  </div>
-               
-                  <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-                    <a href="/pais/2" class="text-decoration-none">
-                      <div class="card border-0 shadow-sm country-card position-relative">
-                        <img src="https://cdn.pixabay.com/photo/2017/12/20/10/48/portugal-3029665_1280.jpg" alt="Imagen de Italia" class="country-img">
-                        <div class="country-overlay">
-                          <p class="country-name">Italia</p>
-                        </div>
-                      </div>
-                    </a>
-                  </div>
-               
-                  <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-                    <a href="/pais/2" class="text-decoration-none">
-                      <div class="card border-0 shadow-sm country-card position-relative">
-                        <img src="https://cdn.pixabay.com/photo/2019/11/14/01/13/amsterdam-4625104_1280.jpg" alt="Imagen de Italia" class="country-img">
-                        <div class="country-overlay">
-                          <p class="country-name">Italia</p>
-                        </div>
-                      </div>
-                    </a>
-                  </div>
-               
-                  <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-                    <a href="/pais/2" class="text-decoration-none">
-                      <div class="card border-0 shadow-sm country-card position-relative">
-                        <img src="https://cdn.pixabay.com/photo/2021/07/09/11/18/austria-6398889_1280.jpg" alt="Imagen de Italia" class="country-img">
-                        <div class="country-overlay">
-                          <p class="country-name">Italia</p>
-                        </div>
-                      </div>
-                    </a>
-                  </div>
-                 
-                
+          </div>
+          <div class="col-12 col-md-6 col-lg-4 mb-3">
+            <div class="card h-100 position-relative overflow-hidden">
+              <img class="card-img-top" th:src="@{${ruta.Foto1}}"
+                   src="https://cdn.pixabay.com/photo/2022/04/22/20/13/montmartre-7150549_1280.jpg"
+                   alt="Imagen de ${ruta.nombre}" />
+                   
+              <div class="card-body pb-5">
+                <span class="badge bg-primary" th:text="${ruta.nombrePais}"></span>
+                <h4 class="card-title" th:text="${ruta.nombre}">aaaaaaaaaaaaaaaa</h4>
+              </div>
+          
+              <!-- Botón siempre abajo -->
+              <a th:href="@{/rutas/{id}(id=${ruta.id})}"
+                 class="btn-1 position-absolute bottom-0 start-50 translate-middle-x mb-3">
+                Ver más
+              </a>
             </div>
-            
+          </div>
+      </div>
+        </div>
+      </div>
+      <!-- Paginación bonita con flechas -->
+<nav aria-label="Page navigation" class="mt-5">
+  <ul class="pagination justify-content-center align-items-center">
 
-        
-        </section>
-        
+      <!-- Botón Anterior -->
+      <li class="page-item" th:classappend="${currentPage == 0} ? 'disabled'">
+          <a class="page-link" th:href="@{/rutas/tipo/{tipo}(tipo=${tipo}, page=${currentPage - 1}, size=${size})}" aria-label="Anterior">
+              <span aria-hidden="true">&laquo;</span>
+              <span class="d-none d-md-inline ms-1">Anterior</span>
+          </a>
+      </li>
+
+      <!-- Indicador de página -->
+      <li class="page-item disabled mx-2">
+          <span class="page-link bg-light text-dark border-0">
+              Página <span th:text="${currentPage + 1}"></span> de <span th:text="${totalPages}"></span>
+          </span>
+      </li>
+
+      <!-- Botón Siguiente -->
+      <li class="page-item" th:classappend="${currentPage >= totalPages - 1} ? 'disabled'">
+          <a class="page-link" th:href="@{/rutas/tipo/{tipo}(tipo=${tipo}, page=${currentPage + 1}, size=${size})}" aria-label="Siguiente">
+              <span class="d-none d-md-inline me-1">Siguiente</span>
+              <span aria-hidden="true">&raquo;</span>
+          </a>
+      </li>
+  </ul>
+</nav>
+
+      
+
         
     </main>
 
